@@ -1,0 +1,21 @@
+class StudentAdmin(admin.ModelAdmin):
+   
+    list_display = (
+        # ("S_name", "S_School", "S_IdCardNum", "S_Sex"), ("S_IdWorkNum", "S_major"), ("S_ToCountry", "S_ToTime", "S_ArrTime",
+        # "S_ToMajor"), ("S_InLiveAddress", "S_JoinProject", "S_InPhone", "S_OutPhone", "S_QQ", "S_WX"), ("S_EName",
+        # "S_EPhone", "S_Face"), "S_Other",
+        "S_name", "S_School", "S_IdCardNum", "S_Sex", "S_IdWorkNum", "S_major", "S_ToCountry", "S_ToTime", "S_ArrTime", "S_ToMajor", "S_InLiveAddress", "S_JoinProject", "S_InPhone", "S_OutPhone", "S_QQ", "S_WX", "S_EName", "S_EPhone", "S_Face", "S_Other",)
+    list_editable = ()
+    readonly_fields = ('S_id',)
+    search_fields = ('S_name',)
+    empty_value_display = 'Null'
+    list_filter = ()
+    fieldsets = (
+        ('比赛信息', {'fields': (
+            ("S_name", "S_School", "S_IdCardNum"), ("S_Sex", "S_IdWorkNum", "S_major"), ("S_ToCountry", "S_ToTime", "S_ArrTime"), ("S_ToMajor", "S_InLiveAddress", "S_JoinProject"), ("S_InPhone", "S_OutPhone", "S_QQ", "S_WX"), ("S_EName", "S_EPhone", "S_Face", "S_Other"),)}),
+        # ('身份信息', {'fields': ('xl',)}),
+        # ('人员属性', {'fields': ('is_active', 'is_staff', 'is_superuser',)}),
+    )
+
+
+admin.site.register(StudentInformation, StudentAdmin)
