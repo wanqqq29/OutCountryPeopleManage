@@ -11,17 +11,16 @@ group = [
     ("S", "学生"),
 ]
 
-# 表结构
+# 出国信息填写表结构
 class StudentInformation(models.Model):
     S_id = models.AutoField(primary_key=True, verbose_name=("序号"))
-    #user_id = models.ForeignKey(User,verbose_name=("用户id"),blank=True,on_delete=models.SET_NULL)
     user_id = models.ForeignKey(User, verbose_name=_("申请人"), null=True, on_delete=models.SET_NULL, db_constraint=False)
     S_name = models.CharField(max_length=10, blank=False, verbose_name=("姓名"))
     S_group = models.CharField(max_length=135,choices=group,blank=True,verbose_name=("身份"))
     S_School = models.CharField(max_length=20, blank=False, verbose_name=("学院"))
     S_IdCardNum = models.CharField(max_length=18, blank=False, verbose_name=("身份证号"))
     S_Sex = models.CharField(max_length=100, blank=False, verbose_name=("性别"))
-    S_IdWorkNum = models.CharField(max_length=20, blank=False, verbose_name=("学号"))
+    S_IdWorkNum = models.CharField(max_length=20, blank=False, verbose_name=("学号/工号"))
     S_major = models.CharField(max_length=30, blank=False, verbose_name=("专业"))
     S_ToCountry = models.CharField(max_length=250, blank=False, verbose_name=("去往外方学校"))
     S_ToTime = models.DateTimeField(verbose_name=("出国机票时间"), blank=False)
@@ -41,3 +40,20 @@ class StudentInformation(models.Model):
         db_table = 'S_Things'
         verbose_name = '出国信息管理'
         verbose_name_plural = '出国信息管理'
+
+
+# 个人信息填写表结构
+class Information(models.Model):
+    I_id = models.AutoField(primary_key=True, verbose_name=("序号"))
+    user_id = models.ForeignKey(User, verbose_name=_("申请人"), null=True, on_delete=models.SET_NULL, db_constraint=False)
+    I_name = models.CharField(max_length=10, blank=False, verbose_name=("姓名"))
+    I_group = models.CharField(max_length=135,choices=group,blank=True,verbose_name=("身份"))
+    I_School = models.CharField(max_length=20, blank=False, verbose_name=("学院"))
+    I_IdCardNum = models.CharField(max_length=18, blank=False, verbose_name=("身份证号"))
+    I_IdWorkNum = models.CharField(max_length=20, blank=False, verbose_name=("学号/工号"))
+    I_major = models.CharField(max_length=30, blank=False, verbose_name=("专业"))
+
+    class Meta:
+        db_table = 'Informations'
+        verbose_name = '个人信息管理'
+        verbose_name_plural = '个人信息管理'
