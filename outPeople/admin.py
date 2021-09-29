@@ -1,15 +1,18 @@
-from django.contrib import admin
 from .models import StudentInformation
+from django.contrib import admin
+from import_export.admin import ExportMixin
 
 # Register your models here.
+from .resource import infoResources
 
 admin.site.site_title = '出国人员登记系统'
 admin.site.site_header = '出国人员登记系统'
 
 
 
-class StudentAdmin(admin.ModelAdmin):
-
+# class StudentAdmin(admin.ModelAdmin):
+class StudentAdmin(ExportMixin, admin.ModelAdmin):
+    resource_class = infoResources
     list_display = (
         "S_name", "S_group","S_School", "S_IdCardNum", "S_Sex", "S_IdWorkNum", "S_major", "S_ToCountry", "S_ToTime", "S_ArrTime",
         "S_ToMajor", "S_InLiveAddress", "S_JoinProject", "S_InPhone", "S_OutPhone", "S_QQ", "S_WX", "S_EName",

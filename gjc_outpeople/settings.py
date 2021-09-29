@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -23,15 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%in^qo&m)9v%&ritv0k985l_#-givpb07%*ubtu2j1_o^t_9#k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'simpleui',
+    'simpleui',  # simpleui
+    'import_export', # 导入导出
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gjc_outpeople.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -80,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gjccgry',
-        'HOST':'localhost',
-        'PORT':'3306',
-        'USER':'gjccgry',
-        'PASSWORD':'gjccgry'
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'USER': 'gjccgry',
+        'PASSWORD': 'gjccgry'
     }
 }
 
@@ -105,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -119,7 +117,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -130,12 +127,11 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,"static"),
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR,"/static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 
-
-#Simpleui 私有
+# Simpleui 私有
 SIMPLEUI_DEFAULT_ICON = False
 SIMPLEUI_HOME_INFO = False
