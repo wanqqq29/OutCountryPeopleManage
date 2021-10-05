@@ -13,7 +13,6 @@ sex =  [
 ]
 class StudentInformation(models.Model):
     S_id = models.AutoField(primary_key=True, verbose_name=("序号"))
-    #user_id = models.ForeignKey(User,verbose_name=("用户id"),blank=True,on_delete=models.SET_NULL)
     user_id = models.ForeignKey(User, verbose_name=_("申请人"), null=True, on_delete=models.SET_NULL, db_constraint=False)
     S_name = models.CharField(max_length=10, blank=False, verbose_name=("姓名"))
     S_group = models.CharField(max_length=135,choices=group,blank=True,verbose_name=("身份"))

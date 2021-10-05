@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%in^qo&m)9v%&ritv0k985l_#-givpb07%*ubtu2j1_o^t_9#k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -79,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gjccgry',
-        'HOST': 'localhost',
+        'HOST': '123.56.127.98',
         'PORT': '3306',
         'USER': 'gjccgry',
         'PASSWORD': 'gjccgry'
@@ -135,3 +136,44 @@ STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 # Simpleui 私有
 SIMPLEUI_DEFAULT_ICON = False
 SIMPLEUI_HOME_INFO = False
+SIMPLEUI_CONFIG = {
+    'system_keep': True,  # 关闭系统默认
+
+    # 菜单名
+    'menu_display': ['信息登记','用户与权限'],
+    'dynamic': True,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
+
+    'menus': [
+        {
+            'app': 'outPeople',
+            'name': '信息登记',
+            'icon': 'fas fa-code',
+            'models': [
+                {
+                    'name': '出国信息登记',
+                    'icon': 'fa fa-user',
+                    # 渲染数据表菜单
+                    'url': '/admin/outPeople/studentinformation/'
+                }
+            ]
+        },
+        {
+            'app': 'auth',
+            'name': '用户与权限',
+            'icon': 'fas fa-user-shield',
+            'models': [
+                {
+                    'name': '用户',
+                    'icon': 'fa fa-user',
+                    'url': 'auth/user/'
+                },
+            {
+                    'name': '用户组',
+                    'icon': 'fa fa-user',
+                    'url': 'auth/group/'
+                }
+            ]
+        },
+
+    ]
+}

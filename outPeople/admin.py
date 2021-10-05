@@ -23,7 +23,7 @@ class StudentAdmin(ExportMixin, admin.ModelAdmin):
     empty_value_display = 'Null'
     list_filter = ('S_School','S_group')
     fieldsets = (
-        ('出国信息', {'fields': (
+        ('出国信息登记', {'fields': (
             ("S_name", "S_group", "S_School", "S_IdCardNum"), ("S_Sex", "S_IdWorkNum", "S_major"),
             ("S_ToCountry", "S_ToTime", "S_ArrTime"), ("S_ToMajor", "S_InLiveAddress", "S_JoinProject"),
             ("S_InPhone", "S_OutPhone", "S_QQ", "S_WX"), ("S_EName", "S_EPhone", "S_Face", "S_Other"),)}),
