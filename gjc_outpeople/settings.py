@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'simpleui',  # simpleui
-    'import_export', # 导入导出
+    'import_export',  # 导入导出
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,44 +136,56 @@ STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 # Simpleui 私有
 SIMPLEUI_DEFAULT_ICON = False
 SIMPLEUI_HOME_INFO = False
-SIMPLEUI_CONFIG = {
-    'system_keep': True,  # 关闭系统默认
-
-    # 菜单名
-    'menu_display': ['信息登记','用户与权限'],
-    'dynamic': True,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
-
-    'menus': [
-        {
-            'app': 'outPeople',
-            'name': '信息登记',
-            'icon': 'fas fa-code',
-            'models': [
-                {
-                    'name': '出国信息登记',
-                    'icon': 'fa fa-user',
-                    # 渲染数据表菜单
-                    'url': '/admin/outPeople/studentinformation/'
-                }
-            ]
-        },
-        {
-            'app': 'auth',
-            'name': '用户与权限',
-            'icon': 'fas fa-user-shield',
-            'models': [
-                {
-                    'name': '用户',
-                    'icon': 'fa fa-user',
-                    'url': 'auth/user/'
-                },
-            {
-                    'name': '用户组',
-                    'icon': 'fa fa-user',
-                    'url': 'auth/group/'
-                }
-            ]
-        },
-
-    ]
-}
+# SIMPLEUI_CONFIG = {
+#     'system_keep': True,  # 关闭系统默认
+#
+#     # 菜单名
+#     'menu_display': ['信息登记', '用户与权限'],
+#     'dynamic': True,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
+#
+#     'menus': [
+#         {
+#             'app': 'outPeople',
+#             'name': '信息登记',
+#             'icon': 'fas fa-code',
+#             'models': [
+#                 {
+#                     'name': '教师信息登记',
+#                     'icon': 'fa fa-user',
+#                     # 渲染数据表菜单
+#                     'url': '/admin/outPeople/t_info/'
+#                 },
+#                 {
+#                     'name': '学生信息登记',
+#                     'icon': 'fa fa-user',
+#                     # 渲染数据表菜单
+#                     'url': '/admin/outPeople/s_info/'
+#                 },
+#                 {
+#                     'name': '出国信息登记',
+#                     'icon': 'fa fa-user',
+#                     # 渲染数据表菜单
+#                     'url': '/admin/outPeople/outcheckin/'
+#                 }
+#             ]
+#         },
+#         {
+#             'app': 'auth',
+#             'name': '用户与权限',
+#             'icon': 'fas fa-user-shield',
+#             'models': [
+#                 {
+#                     'name': '用户',
+#                     'icon': 'fa fa-user',
+#                     'url': 'auth/user/'
+#                 },
+#                 {
+#                     'name': '用户组',
+#                     'icon': 'fa fa-user',
+#                     'url': 'auth/group/'
+#                 }
+#             ]
+#         },
+#
+#     ]
+# }

@@ -1,5 +1,5 @@
 from import_export import resources
-from .models import StudentInformation
+from .models import outCheckin,T_info,S_info
 #实现导出中文表头
 class BaseModelResource(resources.ModelResource):
     def get_export_headers(self):
@@ -9,4 +9,16 @@ class BaseModelResource(resources.ModelResource):
 class infoResources(BaseModelResource):
 
     class Meta:
-        model = StudentInformation
+        model = outCheckin
+
+
+class TResources(BaseModelResource):
+
+    class Meta:
+        model = T_info
+
+
+class SResources(BaseModelResource):
+
+    class Meta:
+        model = S_info
