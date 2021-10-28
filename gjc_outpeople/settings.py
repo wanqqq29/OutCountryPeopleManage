@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import datetime
 import os
 from pathlib import Path
 from django.conf import settings
@@ -40,9 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'outPeople.apps.OutpeopleConfig',
+    'django.contrib.sites',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,6 +136,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
+
+
+#跨域
+# CORS_ORIGIN_WHITELIST=(
+#     'http://127.0.0.1:8081',
+#     'http://localhost:8081'
+# )
+CORS_ORIGIN_ALLOW_ALL=True
+
+CSRF_COOKIE_SECURE=False
 
 # Simpleui 私有
 SIMPLEUI_DEFAULT_ICON = False
