@@ -9,7 +9,8 @@ urlpatterns = [
     path('Tinfo/',outPeople.views.Tinfo),
     path('Sinfo/',outPeople.views.Sinfo),
     path('auth/',include('rest_auth.urls')),
-    path('CsR/',outPeople.views.get_csrf_token)
+    path('CsR/',outPeople.views.get_csrf_token),
+    path('login/',outPeople.views.login)
     # path('fields/',outPeople.views.Allfileds)
 ]
 

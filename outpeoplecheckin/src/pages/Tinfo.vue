@@ -74,7 +74,7 @@
 
 <script>
 import { ref, onMounted, reactive } from "vue";
-import { exportFile, useQuasar, Cookies } from "quasar";
+import { exportFile, useQuasar,Cookies } from "quasar";
 import { api } from "boot/axios";
 
 function wrapCsvValue(val, formatFn) {
@@ -165,11 +165,15 @@ export default {
     }
 
     onMounted(() => {
-      loadData();
-      setTimeout(() => {
-        loading.value = false;
-        console.log("loading", loading.value);
-      }, 2000);
+      if (Cookies.has("ijc")) {
+        loadData();
+        setTimeout(() => {
+          loading.value = false;
+          console.log("loading", loading.value);
+        }, 2000);
+      } else {
+       window.location="/";
+      }
     });
 
     return {

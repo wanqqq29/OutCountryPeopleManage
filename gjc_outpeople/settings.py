@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'outPeople.apps.OutpeopleConfig',
-    'django.contrib.sites',
     'corsheaders'
 ]
 
@@ -150,6 +149,7 @@ CSRF_COOKIE_SECURE=False
 # Simpleui 私有
 SIMPLEUI_DEFAULT_ICON = False
 SIMPLEUI_HOME_INFO = False
+SIMPLEUI_DEFAULT_THEME = 'element.css'
 # SIMPLEUI_CONFIG = {
 #     'system_keep': True,  # 关闭系统默认
 #

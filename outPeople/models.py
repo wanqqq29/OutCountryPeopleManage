@@ -120,3 +120,13 @@ class outCheckin(models.Model):
 
     def __unicode__(self):
         return self.name,self.C_idWorkNum,self.C_idStudyNum
+
+
+class LoginUser(models.Model):
+    username = models.CharField(max_length=135,blank=False,verbose_name=("用户名"))
+    LoginKey = models.CharField(max_length=135,blank=False,verbose_name=("密码"))
+
+    class Meta:
+        db_table = 'login'
+    def __str__(self):
+        return self.LoginKey

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from .models import outCheckin, T_info, S_info
+from .models import outCheckin, T_info, S_info,LoginUser
 
 
 def Merge(dict1, dict2):
@@ -25,6 +25,17 @@ def get_csrf_token(request):
     csrtokent = random.random()
     return JsonResponse({'csrf_token': csrtoken, "jsdlak": str(csrtokent)})
 
+
+@csrf_exempt
+def login(request):
+    if request.method =='POST':
+        if json.loads(request.body).get('tk') == str(csrtokent):
+            user = json.loads(request.body).get('username')
+            pas = LoginUser.objects.get(username=user)
+            if str(pas) == json.loads(request.body).get('pas'):
+                return HttpResponse (1);
+            else:
+                return HttpResponse ('x');
 
 # Create your views here.
 # 教师信息

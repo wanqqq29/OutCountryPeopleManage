@@ -1,7 +1,7 @@
 <!--
  * @Author: wanqqq29
  * @Date: 2021-10-06 22:01:39
- * @LastEditTime: 2021-10-10 18:21:33
+ * @LastEditTime: 2021-11-22 10:27:05
  * @LastEditors: wanqqq29
  * @Description: blog.wanqqq29.cn
  * @FilePath: \outpeoplecheckin\src\layouts\MainLayout.vue
@@ -15,7 +15,7 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          Title
+          出国人员信息管理系统
         </q-toolbar-title>
       </q-toolbar>
 
