@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+{% block content %}
+    <div id="query_table">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                {% for b in fields %}
+                    <th >{{ b.verbose_name }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for a in data %}
+                <tr>
+                    <td style="width: 60px;font-size: 18px">
+                        {% if group %}
+                        <span class="btn btn-primary " style="font-size: 15px"
+                              onclick="window.location.href='/out/Tedit/{{ a.id }}/';">编辑
+                        {% else %}
+                            <span class="btn btn-primary " style="font-size: 15px"
+                              onclick="window.location.href='/out/Sedit/{{ a.id }}/';">编辑
+                        {% endif %}
+                    </td>
+                    <td>{{ a.id }}</td>
+                    <td>{{ a.name }}</td>
+                    <td>{{ a.applicant }}</td>
+                    <td>{{ a.C_group }}</td>
+                    <td>{{ a.C_ToCountry }}</td>
+                    <td>{{ a.C_ToTime }}</td>
+                    <td>{{ a.C_ArrTime }}</td>
+                    <td>{{ a.C_ToMajor }}</td>
+                    <td>{{ a.C_JoinProject }}</td>
+                    <td>{{ a.C_OutPhone }}</td>
+                    <td>{{ a.C_EName }}</td>
+                    <td>{{ a.C_EPhone }}</td>
+                    <td>{{ a.C_Other }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {#    {% if group %}#}
+    {#        <div id="query_table">#}
+    {#            <table class="table table-hover">#}
+    {#                <thead>#}
+    {#                <tr>#}
+    {#                    <th></th>#}
+    {#                    {% for b in fields %}#}
+    {#                        <th scope="col">{{ b.verbose_name }}</th>#}
+    {#                    {% endfor %}#}
+    {#                </tr>#}
+    {#                </thead>#}
+    {#                <tbody>#}
+    {#                {% for a in data %}#}
+    {#                    <tr>#}
+    {#                        <td style="width: 60px;font-size: 18px">#}
+    {#                        <span class="btn btn-primary " style="font-size: 15px"#}
+    {#                              onclick="window.location.href='/Tinfo/detail/{{ a.id }}/';">编辑</span>#}
+    {#                        </td>#}
+    {#                        <td>{{ a.id }}</td>#}
+    {#                        <td>{{ a.username }}</td>#}
+    {#                        <td>{{ a.applicant }}</td>#}
+    {#                        <td>{{ a.T_jobid }}</td>#}
+    {#                        <td>{{ a.T_namePy }}</td>#}
+    {#                        <td>{{ a.T_Sex }}</td>#}
+    {#                        <td>{{ a.T_oldname }}</td>#}
+    {#                        <td>{{ a.T_old }}</td>#}
+    {#                        <td>{{ a.T_Countdy }}</td>#}
+    {#                        <td>{{ a.T_idnum }}</td>#}
+    {#                        <td>{{ a.T_idtype }}</td>#}
+    {#                        <td>{{ a.T_greenCard }}</td>#}
+    {#                        <td>{{ a.T_idlocal }}</td>#}
+    {#                        <td>{{ a.T_idfrom }}</td>#}
+    {#                        <td>{{ a.T_idgroup }}</td>#}
+    {#                        <td>{{ a.T_GAT }}</td>#}
+    {#                        <td>{{ a.T_Wedding }}</td>#}
+    {#                        <td>{{ a.T_zfgroup }}</td>#}
+    {#                        <td>{{ a.T_birthday_confirm }}</td>#}
+    {#                        <td>{{ a.T_birthday }}</td>#}
+    {#                        <td>{{ a.T_workdate }}</td>#}
+    {#                        <td>{{ a.T_zfjoindate }}</td>#}
+    {#                        <td>{{ a.T_teacherType }}</td>#}
+    {#                        <td>{{ a.T_currentType }}</td>#}
+    {#                        <td>{{ a.T_fromSchool }}</td>#}
+    {#                        <td>{{ a.T_fromClass }}</td>#}
+    {#                        <td>{{ a.T_ttype }}</td>#}
+    {#                        <td>{{ a.T_tfrom }}</td>#}
+    {#                        <td>{{ a.T_InLiveAddress }}</td>#}
+    {#                        <td>{{ a.T_QQ }}</td>#}
+    {#                        <td>{{ a.T_WX }}</td>#}
+    {#                        <td>{{ a.T_InPhone }}</td>#}
+    {#                        <td>{{ a.Test }}</td>#}
+    {#                        <td>{{ a.created_date }}</td>#}
+    {#                        <td>{{ a.modified_date }}</td>#}
+    {#                    </tr>#}
+    {#                {% endfor %}#}
+    {#                </tbody>#}
+    {#            </table>#}
+    {#        </div>#}
+    {##}
+    {#    {% else %}#}
+    {#        <div id="query_table">#}
+    {#            <table class="table table-hover">#}
+    {#                <thead>#}
+    {#                <tr>#}
+    {#                    <th></th>#}
+    {#                    {% for b in fields %}#}
+    {#                        <th scope="col">{{ b.verbose_name }}</th>#}
+    {#                    {% endfor %}#}
+    {#                </tr>#}
+    {#                </thead>#}
+    {#                <tbody>#}
+    {#                {% for a in data %}#}
+    {#                    <tr>#}
+    {#                        <td style="width: 60px;font-size: 18px">#}
+    {#                        <span class="btn btn-primary " style="font-size: 15px"#}
+    {#                              onclick="window.location.href='/Cinfo/detail/{{ a.id }}/';">编辑</span>#}
+    {#                        </td>#}
+    {#                        <td>{{ a.id }}</td>#}
+    {#                        <td>{{ a.username }}</td>#}
+    {#                        <td>{{ a.applicant }}</td>#}
+    {#                        <td>{{ a.S_jobid }}</td>#}
+    {#                        <td>{{ a.S_name }}</td>#}
+    {#                        <td>{{ a.S_namePy }}</td>#}
+    {#                        <td>{{ a.S_Sex }}</td>#}
+    {#                        <td>{{ a.S_oldname }}</td>#}
+    {#                        <td>{{ a.S_old }}</td>#}
+    {#                        <td>{{ a.S_Country }}</td>#}
+    {#                        <td>{{ a.S_idnum }}</td>#}
+    {#                        <td>{{ a.S_idtype }}</td>#}
+    {#                        <td>{{ a.S_greenCard }}</td>#}
+    {#                        <td>{{ a.S_idlocal }}</td>#}
+    {#                        <td>{{ a.S_idfrom }}</td>#}
+    {#                        <td>{{ a.S_idgroup }}</td>#}
+    {#                        <td>{{ a.S_GAT }}</td>#}
+    {#                        <td>{{ a.S_Wedding }}</td>#}
+    {#                        <td>{{ a.S_zfgroup }}</td>#}
+    {#                        <td>{{ a.S_birthday_confirm }}</td>#}
+    {#                        <td>{{ a.S_birthday }}</td>#}
+    {#                        <td>{{ a.S_workdate }}</td>#}
+    {#                        <td>{{ a.S_fromSchool }}</td>#}
+    {#                        <td>{{ a.S_fromClass }}</td>#}
+    {#                        <td>{{ a.S_InLiveAddress }}</td>#}
+    {#                        <td>{{ a.S_QQ }}</td>#}
+    {#                        <td>{{ a.S_WX }}</td>#}
+    {#                        <td>{{ a.S_InPhone }}</td>#}
+    {#                        <td>{{ a.Test }}</td>#}
+    {#                        <td>{{ a.created_date }}</td>#}
+    {#                        <td>{{ a.modified_date }}</td>#}
+    {#                    </tr>#}
+    {#                {% endfor %}#}
+    {#                </tbody>#}
+    {#            </table>#}
+    {#        </div>#}
+    {#    {% endif %}#}
+
+{% endblock %}

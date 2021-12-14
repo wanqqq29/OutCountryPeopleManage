@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    <div class="form">
+        <h1 style>学生个人信息登记</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" value="提交">
+        </form>
+    </div>
+{% endblock %}

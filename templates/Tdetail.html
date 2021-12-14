@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+<h1>{{ object.username }}个人信息 </h1>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>职工号</th>
+            <th>姓名拼音</th>
+            <th>性别</th>
+            <th>曾用名</th>
+            <th>年龄</th>
+            <th>国家</th>
+            <th>身份证号</th>
+            <th>身份证件类型</th>
+            <th>是否持有绿卡</th>
+            <th>户口所在地</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.username }}</td>
+            <td>{{ object.T_jobid }}</td>
+            <td>{{ object.T_namePy }}</td>
+            <td>{{ object.T_Sex }}</td>
+            <td>{{ object.T_oldname }}</td>
+            <td>{{ object.T_old }}</td>
+            <td>{{ object.T_Country }}</td>
+            <td>{{ object.T_idnum }}</td>
+            <td>{{ object.T_idtype }}</td>
+            <td>{{ object.T_greenCard }}</td>
+            <td>{{ object.T_idlocal }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>籍贯</th>
+            <th>民族</th>
+            <th>港澳台侨</th>
+            <th>婚姻状态</th>
+            <th>政治面貌</th>
+            <th>组织确认出生日期</th>
+            <th>出生日期</th>
+            <th>参加工作日期</th>
+            <th>参加党派日期</th>
+            <th>教职工类别</th>
+            <th>当前状态（是否在职）</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.T_idfrom }}</td>
+            <td>{{ object.T_idgroup }}</td>
+            <td>{{ object.T_GobjectT }}</td>
+            <td>{{ object.T_Wedding }}</td>
+            <td>{{ object.T_zfgroup }}</td>
+            <td>{{ object.T_birthday_confirm }}</td>
+            <td>{{ object.T_birthday }}</td>
+            <td>{{ object.T_workdate }}</td>
+            <td>{{ object.T_zfjoindate }}</td>
+            <td>{{ object.T_teacherType }}</td>
+            <td>{{ object.T_currentType }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>所在学院</th>
+            <th>所在专业</th>
+            <th>教师类型</th>
+            <th>教师来源</th>
+            <th>国内家庭住址</th>
+            <th>QQ号</th>
+            <th>微信号</th>
+            <th>国内手机</th>
+            <th>测试</th>
+            <th>创建日期</th>
+            <th>修改日期</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.T_fromSchool }}</td>
+            <td>{{ object.T_fromClass }}</td>
+            <td>{{ object.T_ttype }}</td>
+            <td>{{ object.T_tfrom }}</td>
+            <td>{{ object.T_InLiveAddress }}</td>
+            <td>{{ object.T_QQ }}</td>
+            <td>{{ object.T_WX }}</td>
+            <td>{{ object.T_InPhone }}</td>
+            <td>{{ object.Test }}</td>
+            <td>{{ object.created_date }}</td>
+            <td>{{ object.modified_date }}</td>
+        </tr>
+
+    </tbody>
+</table>
+    <span class="btn btn-primary btn-lg" style="float: right" onclick="window.location.href='/Tinfo/edit/{{ object.id }}/'">修改</span>
+{% endblock %}

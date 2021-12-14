@@ -1,0 +1,271 @@
+{% load i18n %}
+{% load bootstrap4 %}
+{# load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!doctype html>
+<html lang="cn-zh">
+
+<head>
+    <title>出国人员登记管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            padding: 0 20px;
+            height: 80px;
+            background-color: dodgerblue;
+            font-size: 20px;
+            line-height: 80px;
+            color: white;
+            letter-spacing: 3px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #header a {
+            color: white;
+            text-decoration: none;
+
+        }
+
+        .row {
+            margin-right: 0 !important;
+        }
+
+        .content {
+            overflow: hidden;
+        }
+
+        .content .state {
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content .state a {
+            color: white;
+            font-size: 18px;
+        }
+
+        .list-group a {
+            font-size: 15px;
+        }
+
+        .form {
+            height: 86vh;
+            overflow: auto;
+        }
+
+        #query_table {
+            width: 100%;
+            overflow: auto;
+            height: 86vh;
+        }
+
+
+        {#index-start#}
+        #index {
+            border-radius: 20px;
+            height: calc(100vh - 130px);
+            width: 100%;
+            background: rgba(101, 132, 226, 0.1);
+
+        }
+        .Title{
+            padding-top: 50px;
+            text-align: center;
+        }
+        .Title img{
+            width: 200px;
+            height: 200px;
+        }
+        .no {
+            padding: 0.1875rem;
+            position: absolute;
+            right: 210px;
+            bottom: 210px;
+        }
+
+        .map {
+            position: relative;
+            height: 100%;
+        }
+
+        .map .chart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            height: 100%;
+            width: 100%;
+        }
+
+        .map1,
+        .map2,
+        .map3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20.475rem;
+            height: 20.475rem;
+            background: url('http://markdowntc.wanqqq29.cn/map.png') no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.5;
+        }
+
+        .map2 {
+            width: 21.0375rem;
+            height: 21.0375rem;
+            background-image: url('http://markdowntc.wanqqq29.cn/lbx.png');
+            opacity: 0.4;
+            animation: rotate 15s linear infinite;
+            z-index: 2;
+        }
+
+        .map3 {
+            width: 23.075rem;
+            height: 23.075rem;
+            background-image: url('http://markdowntc.wanqqq29.cn/jt.png');
+            animation: rotate1 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes rotate1 {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        {# index-start #}
+        .rcontent {
+            background-color: aliceblue;
+            border-top-left-radius: 35px;
+            padding: 20px;
+            height: 90vh;
+        }
+    </style>
+</head>
+
+<body>
+{% block header %}
+    <div id="header">
+        <div class="h_left"><a href="{% url 'index' %}"> 出国人员管理系统 </a></div>
+        <div class="h_right">
+                <a href="/admin/">管理后台</a>
+        </div>
+
+    </div>
+{% endblock %}
+
+<div class="row content">
+    <div class="col-2" style="padding-right: 0;background: #1e90ff;height: calc(100vh - 80px);padding-left: 30px;">
+        <div class="state">
+            {% if user.is_authenticated %}
+                {{ user.get_username }}|
+                <a href="{% url 'auth_logout' %}">退出</a> |
+                <a href="{% url 'auth_password_change' %}">修改密码</a>
+            {% else %}
+                <a href="/accounts/login/">登录</a> | <a href="/accounts/register/">注册</a>
+            {% endif %}
+        </div>
+        <div class="list-group">
+            <a href="/" class="list-group-item list-group-item-action list-group-item-primary">系统首页</a>
+
+            <a class="list-group-item list-group-item-action list-group-item-primary" data-toggle="collapse"
+               href="#teacher" role="button"
+               aria-expanded="false" aria-controls="collapseExample">
+                教师信息登记
+            </a>
+            <div class="collapse" id="teacher">
+                <div class="card card-body">
+                    <a href="/Tinfo/add/"
+                       class="list-group-item list-group-item-action list-group-item-secondry">新增信息</a>
+                    {% if detailid != '' %}
+                        {% if  group %}
+                            <a href="/Tinfo/detail/{{ detailid }}"
+                                    {#                    <a href="/Tinfo/detail/"#}
+                               class="list-group-item list-group-item-action list-group-item-secondry">查询信息</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <a class="list-group-item list-group-item-action list-group-item-primary" data-toggle="collapse"
+               href="#student" role="button"
+               aria-expanded="false" aria-controls="collapseExample">
+                学生信息登记
+            </a>
+            <div class="collapse" id="student">
+                <div class="card card-body">
+                    <a href="/Sinfo/add/"
+                       class="list-group-item list-group-item-action list-group-item-secondry">新增信息</a>
+                    {% if detailid != '' %}
+                        {% if not group %}
+                            <a href="/Sinfo/detail/{{ detailid }}"
+                               class="list-group-item list-group-item-action list-group-item-secondry">查询信息</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <a class="list-group-item list-group-item-action list-group-item-primary" data-toggle="collapse"
+               href="#out" role="button"
+               aria-expanded="false" aria-controls="collapseExample">
+                出国信息登记
+            </a>
+            <div class="collapse" id="out">
+                <div class="card card-body">
+                {% if group %}
+                    <a href="/out/Tadd/"
+                       class="list-group-item list-group-item-action list-group-item-secondry">新增信息</a>
+                    {% if C %}
+                        <a href="/out/query/"
+                           class="list-group-item list-group-item-action list-group-item-secondry">查询信息</a>
+                    {% endif %}
+                {% else %}
+                    <a href="/out/Sadd/"
+                       class="list-group-item list-group-item-action list-group-item-secondry">新增信息</a>
+                    {% if C %}
+                        <a href="/out/query/"
+                           class="list-group-item list-group-item-action list-group-item-secondry">查询信息</a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-10" style="background: #1e90ff; ">
+        <div class="rcontent">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+<h1>{{ object.username }}个人信息 </h1>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>姓名拼音</th>
+            <th>性别</th>
+            <th>曾用名</th>
+            <th>年龄</th>
+            <th>国家</th>
+            <th>身份证号</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.S_jobid }}</td>
+            <td>{{ object.S_name }}</td>
+            <td>{{ object.S_namePy }}</td>
+            <td>{{ object.S_Sex }}</td>
+            <td>{{ object.S_oldname }}</td>
+            <td>{{ object.S_old }}</td>
+            <td>{{ object.S_Country }}</td>
+            <td>{{ object.S_idnum }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>身份证件类型</th>
+            <th>是否持有绿卡</th>
+            <th>户口所在地</th>
+            <th>籍贯</th>
+            <th>民族</th>
+            <th>港澳台侨</th>
+            <th>婚姻状态</th>
+            <th>政治面貌</th>
+            <th>组织确认出生日期</th>
+            <th>出生日期</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.S_idtype }}</td>
+            <td>{{ object.S_greenCard }}</td>
+            <td>{{ object.S_idlocal }}</td>
+            <td>{{ object.S_idfrom }}</td>
+            <td>{{ object.S_idgroup }}</td>
+            <td>{{ object.S_GAT }}</td>
+            <td>{{ object.S_Wedding }}</td>
+            <td>{{ object.S_zfgroup }}</td>
+            <td>{{ object.S_birthday_confirm }}</td>
+            <td>{{ object.S_birthday }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<table class="table ">
+    <thead>
+        <tr>
+
+            <th>入学日期</th>
+            <th>所在学院</th>
+            <th>专业</th>
+            <th>国内家庭住址</th>
+            <th>QQ号</th>
+            <th>微信号</th>
+            <th>国内手机</th>
+            <th>测试</th>
+            <th>创建日期</th>
+            <th>修改日期</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.S_workdate }}</td>
+            <td>{{ object.S_fromSchool }}</td>
+            <td>{{ object.S_fromClass }}</td>
+            <td>{{ object.S_InLiveAddress }}</td>
+            <td>{{ object.S_QQ }}</td>
+            <td>{{ object.S_WX }}</td>
+            <td>{{ object.S_InPhone }}</td>
+            <td>{{ object.Test }}</td>
+            <td>{{ object.created_date }}</td>
+            <td>{{ object.modified_date }}</td>
+        </tr>
+
+    </tbody>
+</table>
+    <span class="btn btn-primary btn-lg" style="float: right" onclick="window.location.href='/Sinfo/edit/{{ object.id }}/'">修改</span>
+{% endblock %}
