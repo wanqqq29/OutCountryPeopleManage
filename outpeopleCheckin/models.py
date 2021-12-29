@@ -16,6 +16,7 @@ class UserProfile(models.Model):
 group = [
     ("教师", "教师"),
     ("学生", "学生"),
+    ("汉办出国人员", "汉办出国人员"),
 ]
 sex = [
     ("男", "男"),
