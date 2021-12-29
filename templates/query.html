@@ -17,7 +17,7 @@
             <tr>
                 <th></th>
                 {% for b in fields %}
-                    <th >{{ b.verbose_name }}</th>
+                    <th>{{ b.verbose_name }}</th>
                 {% endfor %}
             </tr>
             </thead>
@@ -26,11 +26,11 @@
                 <tr>
                     <td style="width: 60px;font-size: 18px">
                         {% if group %}
-                        <span class="btn btn-primary " style="font-size: 15px"
-                              onclick="window.location.href='/out/Tedit/{{ a.id }}/';">编辑
+                            <span class="btn btn-primary " style="font-size: 15px"
+                                  onclick="window.location.href='/out/Tedit/{{ a.id }}/';">编辑</span>
                         {% else %}
                             <span class="btn btn-primary " style="font-size: 15px"
-                              onclick="window.location.href='/out/Sedit/{{ a.id }}/';">编辑
+                                  onclick="window.location.href='/out/Sedit/{{ a.id }}/';">编辑</span>
                         {% endif %}
                     </td>
                     <td>{{ a.id }}</td>
